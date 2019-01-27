@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Catch\\SS\\TwigElemental\\": "src/"
+            "CatchDesign\\SS\\TwigElemental\\": "src/"
         }
     }
 }
