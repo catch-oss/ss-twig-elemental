@@ -1,5 +1,5 @@
 {
-    "name": "catch/twig-elemental",
+    "name": "catchdesign/twig-elemental",
     "type": "silverstripe-vendormodule",
     "description": "Allows use of twig with silverstripe-elemental in SilverStripe 4",
     "license": "MIT",
