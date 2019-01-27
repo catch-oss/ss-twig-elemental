@@ -4,7 +4,7 @@ This extension allows Twig templates to be used for Elemental Blocks
 
 ## Usage
 
-Add to your project
+Add to your project (something like this - maybe manually put it in the composer.json)
 
 ```
 composer require catchdesign/twig-elemental
