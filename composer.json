@@ -1,0 +1,28 @@
+{
+    "name": "catch/twig-elemental",
+    "type": "silverstripe-vendormodule",
+    "description": "Allows use of twig with silverstripe-elemental in SilverStripe 4",
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/azt3k/silverstripe-twig"
+        }
+    ],
+    "authors": [
+        {
+            "name": "Sam Etheridge",
+            "email": "sam@etheridge.co.nz"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "^4",
+        "dnadesign/silverstripe-elemental": "^4",
+        "azt3k/silverstripe-twig": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Catch\\SS\\TwigElemental\\": "src/"
+        }
+    }
+}
