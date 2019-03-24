@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "content-hash": "88203a0c54ca0962fdb3e9c0742f731e",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/azt3k/silverstripe-twig.git",
-                "reference": "5fb5df800a5ef6e8fd47298d882f115d1b59e53c"
+                "reference": "37e9e241ea14f4deef8dcc7f7e90894539eb3d85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/azt3k/silverstripe-twig/zipball/5fb5df800a5ef6e8fd47298d882f115d1b59e53c",
-                "reference": "5fb5df800a5ef6e8fd47298d882f115d1b59e53c",
+                "url": "https://api.github.com/repos/azt3k/silverstripe-twig/zipball/37e9e241ea14f4deef8dcc7f7e90894539eb3d85",
+                "reference": "37e9e241ea14f4deef8dcc7f7e90894539eb3d85",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
             "support": {
                 "source": "https://github.com/azt3k/silverstripe-twig/tree/master"
             },
-            "time": "2018-11-20T05:35:44+00:00"
+            "time": "2019-03-18T18:58:16+00:00"
         },
         {
             "name": "composer/ca-bundle",

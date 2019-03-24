@@ -1,11 +1,7 @@
-a{% if c.ElementControllers %}
+{% if c.ElementControllers %}
     <ul>
-        {% for res in c.ElementControllers %}
-            <li>
-                Looped!
-            </li>
+        {% for el in c.ElementControllers %}
+            {{ el.forTemplate|raw }}
         {% endfor %}
     </ul>
 {% endif %}
-bb
-asdwwwwww
