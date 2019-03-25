@@ -1,3 +1,5 @@
 SilverStripe\Core\Injector\Injector:
   DNADesign\Elemental\Models\ElementalArea:
     class: CatchDesign\SS\TwigElemental\TwigElementalArea
+  DNADesign\Elemental\Controllers\ElementController:
+    class: CatchDesign\SS\TwigElemental\TwigElementController

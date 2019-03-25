@@ -1,7 +1,5 @@
 {% if c.ElementControllers %}
-    <ul>
-        {% for el in c.ElementControllers %}
-            {{ el.forTemplate|raw }}
-        {% endfor %}
-    </ul>
+    {% for el in c.ElementControllers %}
+        {{ el.forTemplate|raw }}
+    {% endfor %}
 {% endif %}

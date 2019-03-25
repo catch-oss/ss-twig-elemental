@@ -1,0 +1,9 @@
+<div class="element {{c.SimpleClassName.LowerCase}}
+    {% if c.StyleVariant %}
+        c.StyleVariant
+    {% endif %}
+    {% if c.ExtraClass %}
+        c.ExtraClass
+    {% endif %}" id="{{ c.Anchor }}">
+	{{ c.Element.forTemplate|raw }}
+</div>
