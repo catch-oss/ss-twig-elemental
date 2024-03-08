@@ -1,0 +1,11 @@
+---
+Name: twig-elemental-graphql
+After: elemental-graphql
+Only:
+  classexists: 'SilverStripe\GraphQL\Schema\Schema'
+---
+SilverStripe\GraphQL\Schema\Schema:
+  schemas:
+    admin:
+      src:
+        twig-elemental: 'catchdesign/twig-elemental: _graphql'
