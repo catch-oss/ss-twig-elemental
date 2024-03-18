@@ -1,12 +1,12 @@
 {
     "name": "catchdesign/twig-elemental",
     "type": "silverstripe-vendormodule",
-    "description": "Allows use of twig with silverstripe-elemental in SilverStripe 4",
+    "description": "Allows use of twig with silverstripe-elemental in SilverStripe 5",
     "license": "MIT",
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/azt3k/silverstripe-twig"
+            "url": "git@github.com:catch-oss/silverstripe-twig.git"
         }
     ],
     "authors": [
@@ -16,9 +16,9 @@
         }
     ],
     "require": {
-        "silverstripe/framework": "^4",
-        "dnadesign/silverstripe-elemental": "^4",
-        "azt3k/silverstripe-twig": "dev-master"
+        "silverstripe/framework": "^5",
+        "dnadesign/silverstripe-elemental": "^5",
+        "azt3k/silverstripe-twig": "dev-feature/ss5-update"
     },
     "autoload": {
         "psr-4": {

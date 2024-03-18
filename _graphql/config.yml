@@ -1,0 +1,4 @@
+resolvers:
+  - 'DNADesign\Elemental\GraphQL\Resolvers\Resolver'
+typeMapping:
+  CatchDesign\SS\TwigElemental\TwigElementalArea: ElementalArea
