@@ -18,7 +18,7 @@
     "require": {
         "silverstripe/framework": "^5",
         "dnadesign/silverstripe-elemental": "^5",
-        "azt3k/silverstripe-twig": "dev-feature/ss5-update"
+        "azt3k/silverstripe-twig": "dev-master"
     },
     "autoload": {
         "psr-4": {
