@@ -27,10 +27,10 @@ composer require catchdesign/twig-elemental
 
 Extend your page with some config yaml
 
-```
+```yaml
 Page:
   extensions:
-    - CatchDesign\SS\TwigElemental\TwigElementalPageExtension
+    twig-elemental: CatchDesign\SS\TwigElemental\TwigElementalPageExtension
 ```
 
 Now pages have a ElementalArea which you can add in to your twig templates
