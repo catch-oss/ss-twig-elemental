@@ -30,7 +30,7 @@ Extend your page with some config yaml
 ```yaml
 Page:
   extensions:
-    twig-elemental: CatchDesign\SS\TwigElemental\TwigElementalPageExtension
+    - CatchDesign\SS\TwigElemental\TwigElementalPageExtension
 ```
 
 Now pages have a ElementalArea which you can add in to your twig templates
@@ -80,4 +80,24 @@ class SamBlock extends BaseElement
 <h1>{{ c.Title }}</h1>
 <h1>{{ c.SuchField }}</h1>
 <p> ### End Sam Block ###</p>
+```
+
+## Security
+
+When writing Twig templates for Elemental blocks:
+
+- **Auto-escaping**: Twig auto-escapes output by default. Use `{{ content }}` for safe output.
+- **Raw output**: Only use `{{ content | raw }}` for trusted HTML content (e.g., `forTemplate` output from SS fields).
+- **User input**: Never render unescaped user input directly. Always let Twig's auto-escaping handle it.
+
+Example of safe patterns:
+```twig
+{# Safe - auto-escaped #}
+{{ c.Title }}
+
+{# Safe - SS HTMLText fields handle their own escaping #}
+{{ c.ElementalArea.forTemplate | raw }}
+
+{# Unsafe - avoid with user input #}
+{{ c.UserInput | raw }}
 ```

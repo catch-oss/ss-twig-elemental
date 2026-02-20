@@ -1,4 +1,6 @@
 # Expose common static fields for the ElementEditor component to use for preview summaries
+# Note: paginateList is disabled because ElementEditor requires all elements loaded at once
+# for drag-and-drop reordering. Pages with many elements should use nested areas instead.
 CatchDesign\SS\TwigElemental\TwigElementalArea:
   fields:
     id: true
