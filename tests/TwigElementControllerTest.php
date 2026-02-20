@@ -23,9 +23,12 @@ class TwigElementControllerTest extends SapphireTest
         $this->assertArrayHasKey(TwigRenderer::class, $traits);
     }
 
-    public function testInjectorResolvesClass(): void
+    public function testInjectorConfigured(): void
     {
-        $controller = Injector::inst()->create(TwigElementController::class);
-        $this->assertInstanceOf(TwigElementController::class, $controller);
+        // ElementController requires a BaseElement in constructor,
+        // so we verify the Injector spec is configured correctly instead
+        $spec = Injector::inst()->getServiceSpec(ElementController::class);
+        $this->assertNotNull($spec, 'ElementController should have an Injector specification');
+        $this->assertEquals(TwigElementController::class, $spec['class'] ?? null);
     }
 }
