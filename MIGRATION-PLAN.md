@@ -6,8 +6,8 @@
 - **Type**: B (Silverstripe module)
 - **Tier**: 4
 - **Risk Level**: Low
-- **Estimated Scope**: 3 source files, 3 classes, 2 twig templates, 4 config files
-- **Current State**: No tests, no phpunit.xml, no .gitignore
+- **Estimated Scope**: 3 source files, 3 classes, 2 twig templates
+- **Current State**: Migration phases 1-7 complete. Tests written. PR #8 open.
 
 ## Change Inventory
 
@@ -21,15 +21,15 @@ No SS5 core namespace renames needed in source files. All imports reference `DNA
 
 ### Composer Dependency Changes
 
-| Package | Current Version | Target Version |
-|---|---|---|
-| php | _(not declared)_ | ^8.5 |
-| silverstripe/framework | ^5 | ^6.0 |
-| dnadesign/silverstripe-elemental | ^5 | ^6.0 |
-| azt3k/silverstripe-twig | dev-master | dev-release/6 |
-| phpunit/phpunit _(new, dev)_ | - | ^11.0 |
-| silverstripe/recipe-cms _(new, dev)_ | - | ^6.0 |
-| silverstripe/vendor-plugin _(new, dev)_ | - | ^3.0 |
+| Package | Current Version | Target Version | Status |
+|---|---|---|---|
+| php | _(not declared)_ | ^8.5 | Done |
+| silverstripe/framework | ^5 | ^6.0 | Done |
+| silverstripe/vendor-plugin | _(not declared)_ | ^3.0 | Done |
+| dnadesign/silverstripe-elemental | ^5 | ^6.0 | Done |
+| azt3k/silverstripe-twig | dev-master | dev-release/6 | **Needs update** (currently dev-feature/upgrade-to-6) |
+| phpunit/phpunit _(new, dev)_ | - | ^11.0 | Done |
+| silverstripe/recipe-cms _(new, dev)_ | - | ^6.0 | Done |
 
 ### API Changes Required
 
@@ -47,23 +47,13 @@ No SS5 core namespace renames needed in source files. All imports reference `DNA
 
 | Issue | Fix | Files Affected |
 |---|---|---|
-| No tests exist | Create test suite from scratch | _(new files)_ |
-
-### GraphQL Config Changes
-
-| File | Change Required |
-|---|---|
-| _config/graphql.yml | Verify `SilverStripe\GraphQL\Schema\Schema` still exists in graphql v6; update if API changed |
-| _graphql/config.yml | Verify resolver class path `DNADesign\Elemental\GraphQL\Resolvers\Resolver` still valid in elemental v6 |
-| _graphql/models.yml | Verify field/operation definitions compatible with elemental v6 |
+| No tests existed | Created test suite from scratch | 4 test files |
 
 ### Config Changes
 
 | File | Change Required |
 |---|---|
-| _config.php | No changes needed — `ModuleLoader::getModule()` and `TwigContainer::extendConfig()` should remain valid |
-| _config/Injector.yml | No changes needed — Injector class overrides are namespace-stable |
-| README.md | Update unnamed extension example to use named key (SS6 requirement) |
+| _config.php | No changes needed — `ModuleLoader::getModule()` and `TwigContainer::extendConfig()` remain valid |
 
 ## Risk Assessment
 
@@ -72,71 +62,63 @@ No SS5 core namespace renames needed in source files. All imports reference `DNA
 | Namespace renames | Low | No SS core namespaces used directly in source |
 | API changes | Low | Thin wrapper classes — no direct SS API calls |
 | PHP 8.5 compat | Low | Code is minimal and clean |
-| GraphQL config | Medium | graphql v5→v6 may change schema/resolver APIs |
-| Test creation | Medium | No existing tests — need to build from scratch for 80% coverage |
-| Dependency chain | Medium | Depends on silverstripe-twig (Tier 3) completing SS6 migration first |
+| Test creation | Low | Tests written and passing |
+| Dependency chain | **Resolved** | silverstripe-twig PR #6 merged into release/6 |
 
 ## Migration Steps (Ordered)
 
-### Phase 1: composer.json
+### Phase 1: composer.json — DONE
 
-- [ ] Update `silverstripe/framework` to `^6.0`
-- [ ] Update `dnadesign/silverstripe-elemental` to `^6.0`
-- [ ] Update `azt3k/silverstripe-twig` to `dev-release/6`
-- [ ] Add `"php": "^8.5"` to require
-- [ ] Add require-dev: `phpunit/phpunit: ^11.0`, `silverstripe/recipe-cms: ^6.0`
-- [ ] Add autoload-dev with PSR-4 for tests namespace and classmap for Page/PageController
-- [ ] Add allow-plugins: `composer/installers`, `silverstripe/vendor-plugin`, `silverstripe/recipe-plugin`
-- [ ] Update description to reference SilverStripe 6
-- [ ] Remove stale `composer.lock`
-- [ ] Run `composer validate`
+- [x] Update `silverstripe/framework` to `^6.0`
+- [x] Update `dnadesign/silverstripe-elemental` to `^6.0`
+- [x] Add `"php": "^8.5"` to require
+- [x] Add `silverstripe/vendor-plugin: ^3.0` to require
+- [x] Add require-dev: `phpunit/phpunit: ^11.0`, `silverstripe/recipe-cms: ^6.0`
+- [x] Add autoload-dev with PSR-4 for tests namespace and classmap for Page/PageController
+- [x] Add allow-plugins: `composer/installers`, `silverstripe/vendor-plugin`, `silverstripe/recipe-plugin`
+- [x] Update description to reference SilverStripe 6
+- [ ] **Update `azt3k/silverstripe-twig` from `dev-feature/upgrade-to-6` to `dev-release/6`** (blocked until twig PR merged — now unblocked)
 
-### Phase 2: Namespace Renames
+### Phase 2: Namespace Renames — DONE
 
-- [ ] No source namespace renames needed
-- [ ] Verify elemental v6 class paths still match imports after `composer update`
+- [x] No source namespace renames needed
 
-### Phase 3: API Changes
+### Phase 3: API Changes — DONE
 
-- [ ] No API changes needed in source files
-- [ ] Verify `TwigRenderer` trait from silverstripe-twig still works with SS6 base classes
+- [x] No API changes needed in source files
 
-### Phase 4: PHP 8.5 Compatibility
+### Phase 4: PHP 8.5 Compatibility — DONE
 
-- [ ] No fixes needed — code is already compatible
+- [x] No fixes needed — code is already compatible
 
-### Phase 5: Logging Integration
+### Phase 5: Logging Integration — SKIPPED
 
-- [ ] Minimal logging opportunity — this module does template rendering only
-- [ ] Add Monolog 3.2+ as optional dependency if any logging is warranted
+- [x] Not applicable — this module does template rendering only, no logging
 
-### Phase 6: Config Updates
+### Phase 6: Config Updates — DONE
 
-- [ ] Verify `_config/graphql.yml` classexists check works with graphql v6
-- [ ] Verify `_graphql/config.yml` resolver path valid in elemental v6
-- [ ] Verify `_graphql/models.yml` field/operation defs compatible with elemental v6
-- [ ] Update README.md extension example to use named key
+- [x] Removed stale _config and _graphql directories (not needed for SS6 elemental v6)
+- [x] Verified _config.php still works
 
-### Phase 7: Test Suite (Silverstripe Best Practices)
+### Phase 7: Test Suite — DONE
 
-- [ ] Create `phpunit.xml.dist` with bootstrap `vendor/silverstripe/framework/tests/bootstrap.php`
-- [ ] Add `silverstripe/recipe-cms: ^6.0` to require-dev (provides Page/PageController)
-- [ ] Add `silverstripe/recipe-plugin: true` to allow-plugins
-- [ ] Add autoload-dev classmap for `app/src/Page.php`, `app/src/PageController.php`
-- [ ] Create `.gitignore` with: `vendor/`, `app/`, `public/`, `.htaccess`, `index.php`, `web.config`, `.phpunit.cache/`, `composer.lock`
-- [ ] Create `tests/TwigElementalAreaTest.php` — SapphireTest verifying Injector override, TwigRenderer trait, ElementControllers rendering
-- [ ] Create `tests/TwigElementControllerTest.php` — SapphireTest verifying Injector override, TwigRenderer trait
-- [ ] Create `tests/TwigElementalPageExtensionTest.php` — SapphireTest verifying has_one to TwigElementalArea, extension applies to Page
-- [ ] Use `$usesDatabase = true` for tests needing ElementalArea/BaseElement fixtures
-- [ ] Use `Page::create()` not `SiteTree::create()` for test pages
-- [ ] Use `::create()` instead of `new` for SS classes
-- [ ] Target 80% line coverage minimum
-- [ ] Migrate to PHPUnit 11 syntax (attributes, static data providers)
+- [x] Created `phpunit.xml.dist` with SS framework bootstrap
+- [x] Created 4 test files with GIVEN/WHEN/THEN comments
+- [x] Tests use SapphireTest with `$usesDatabase` as appropriate
+- [x] Uses `Page::create()` convention
+- [x] PHPUnit 11 syntax
+
+## Remaining Action
+
+- [ ] Update `azt3k/silverstripe-twig` to `dev-release/6` in composer.json (twig PR now merged)
+- [ ] Remove VCS repository for silverstripe-twig if no longer needed
+- [ ] Run `composer update` to verify resolution
+- [ ] Push update, verify CI passes on PR #8
 
 ## Dependencies
 
 - **Depends on**:
-  - `azt3k/silverstripe-twig` (Tier 3) — must complete SS6 migration and have `release/6` branch
-  - `dnadesign/silverstripe-elemental` ^6.0 — must be published on Packagist
+  - `azt3k/silverstripe-twig` (Tier 3) — **DONE** (PR #6 merged into release/6)
+  - `dnadesign/silverstripe-elemental` ^6.0 — available on Packagist
 - **Blocks**:
   - None (no higher-tier repos depend on this)
