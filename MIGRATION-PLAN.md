@@ -77,7 +77,7 @@ No SS5 core namespace renames needed in source files. All imports reference `DNA
 - [x] Add autoload-dev with PSR-4 for tests namespace and classmap for Page/PageController
 - [x] Add allow-plugins: `composer/installers`, `silverstripe/vendor-plugin`, `silverstripe/recipe-plugin`
 - [x] Update description to reference SilverStripe 6
-- [ ] **Update `azt3k/silverstripe-twig` from `dev-feature/upgrade-to-6` to `dev-release/6`** (blocked until twig PR merged — now unblocked)
+- [x] **Update `azt3k/silverstripe-twig` from `dev-feature/upgrade-to-6` to `dev-release/6`** — done
 
 ### Phase 2: Namespace Renames — DONE
 
@@ -108,12 +108,14 @@ No SS5 core namespace renames needed in source files. All imports reference `DNA
 - [x] Uses `Page::create()` convention
 - [x] PHPUnit 11 syntax
 
-## Remaining Action
+## Remaining Action — DONE
 
-- [ ] Update `azt3k/silverstripe-twig` to `dev-release/6` in composer.json (twig PR now merged)
-- [ ] Remove VCS repository for silverstripe-twig if no longer needed
-- [ ] Run `composer update` to verify resolution
-- [ ] Push update, verify CI passes on PR #8
+- [x] Update `azt3k/silverstripe-twig` to `dev-release/6` in composer.json
+- [x] VCS repository kept (needed to resolve catch-oss fork)
+- [x] `composer update` succeeded — twig resolved from release/6
+- [x] All 12 tests pass (12 tests, 15 assertions)
+- [x] GIVEN/WHEN/THEN comments added to all test methods
+- [x] Pushed to feature/upgrade-to-6, PR #8 updated
 
 ## Dependencies
 
