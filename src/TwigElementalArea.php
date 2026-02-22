@@ -7,5 +7,5 @@ use DNADesign\Elemental\Models\ElementalArea;
 
 class TwigElementalArea extends ElementalArea
 {
-     use TwigRenderer;
+    use TwigRenderer;
 }

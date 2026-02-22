@@ -27,7 +27,7 @@ composer require catchdesign/twig-elemental
 
 Extend your page with some config yaml
 
-```
+```yaml
 Page:
   extensions:
     - CatchDesign\SS\TwigElemental\TwigElementalPageExtension
@@ -80,4 +80,28 @@ class SamBlock extends BaseElement
 <h1>{{ c.Title }}</h1>
 <h1>{{ c.SuchField }}</h1>
 <p> ### End Sam Block ###</p>
+```
+
+## TODO
+
+- [ ] Pin `azt3k/silverstripe-twig` to a tagged release instead of `dev-release/6` once silverstripe-twig has a stable SS6 release tag
+
+## Security
+
+When writing Twig templates for Elemental blocks:
+
+- **Auto-escaping**: Twig auto-escapes output by default. Use `{{ content }}` for safe output.
+- **Raw output**: Only use `{{ content | raw }}` for trusted HTML content (e.g., `forTemplate` output from SS fields).
+- **User input**: Never render unescaped user input directly. Always let Twig's auto-escaping handle it.
+
+Example of safe patterns:
+```twig
+{# Safe - auto-escaped #}
+{{ c.Title }}
+
+{# Safe - SS HTMLText fields handle their own escaping #}
+{{ c.ElementalArea.forTemplate | raw }}
+
+{# Unsafe - avoid with user input #}
+{{ c.UserInput | raw }}
 ```

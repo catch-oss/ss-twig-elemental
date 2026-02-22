@@ -7,7 +7,5 @@ use DNADesign\Elemental\Controllers\ElementController;
 
 class TwigElementController extends ElementController
 {
-     use TwigRenderer;
-
-     
+    use TwigRenderer;
 }
