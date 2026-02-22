@@ -82,6 +82,10 @@ class SamBlock extends BaseElement
 <p> ### End Sam Block ###</p>
 ```
 
+## TODO
+
+- [ ] Pin `azt3k/silverstripe-twig` to a tagged release instead of `dev-release/6` once silverstripe-twig has a stable SS6 release tag
+
 ## Security
 
 When writing Twig templates for Elemental blocks:
