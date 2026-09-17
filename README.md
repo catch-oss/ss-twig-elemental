@@ -84,7 +84,7 @@ class SamBlock extends BaseElement
 
 ## TODO
 
-- [ ] Pin `azt3k/silverstripe-twig` to a tagged release instead of `dev-release/6` once silverstripe-twig has a stable SS6 release tag
+- [ ] Pin `azt3k/silverstripe-twig` to a tagged release instead of `dev-release/6.2` once silverstripe-twig has a stable SS6 release tag
 
 ## Security
 
